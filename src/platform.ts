@@ -184,9 +184,9 @@ export class DaikinCloudPlatform implements DynamicPlatformPlugin {
         }
 
         const daikinCloud: DaikinCloud = new DaikinCloudController(tokenSet, options);
-
+        const self = this;
         daikinCloud.on('token_update', tokenSet => {
-            this.log.info(`UPDATED Daikin Cloud tokenset, use for future and wrote to ${tokenFile}`);
+            self.log.info(`UPDATED Daikin Cloud tokenset, use for future and wrote to ${tokenFile}`);
             fs.writeFileSync(tokenFile, JSON.stringify(tokenSet));
         });
 
